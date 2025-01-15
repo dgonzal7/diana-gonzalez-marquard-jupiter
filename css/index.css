@@ -78,8 +78,16 @@ color: #525252;
 }
 
 #Skills {
-  padding: 10px 0;
+  padding: 10px 0px 10px 0px;
   text-align: center;
+  display: grid;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 10px 0;
 }
 
 #Projects {
