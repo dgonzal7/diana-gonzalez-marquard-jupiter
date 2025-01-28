@@ -28,44 +28,66 @@ for (let skill of skills) {
 }
 
 const messageForm = document.querySelector("[name='leave_message']");
-messageForm.addEventListener("submit", handleSubmit);
+messageForm.addEventListener("submit", handleSubmit)
 
-function handleSubmit(e){
-  e.preventDefault();
-  const name = e.target.usersName.value;
-  const email = e.target.usersEmail.value;
-  const message = e.target.usersMessage.value;
-  console.log(name, email, message);
+// submit callback
+function handleSubmit(event) {
+  event.preventDefault();
+
+  const data = new FormData(event.target);
+  console.log(data); 
+
+  const name = data.get("usersNameId");
+  const email = data.get("emailId");
+  const message = data.get("usersMessageId");
+  console.log(usersNameId);
+  console.log(emailId);
+  console.log(usersMessageId);
+}
   
   //Messages in List
-  const messageSection = document.querySelector('#messages');
-  const messageList = messageSection.querySelector("ul");
+  const messageSection = document.getElementById('messages');
+  const messageList = messageSection.getElementsByTagName("ul");
+  console.log(messageList);
+
+  messageSection.hidden = false; 
+
   const newMessage = document.createElement("li");
+  newString = `<a href="mailto:${emailId}">${usersNameId}</a>\n
+  <span>${usersMessageId}</span>`;
+  console.log(newString);
+  newMessage.innerHTML = newString;
   
-  newMessage.innerHTML = `<a href="mailto:${usersEmail}">${usersName}</a>\n
-  <span>${usersMessage}</span>`;
-  
-  //New Button Element
-  const removeButton = document.createElement("remove-button");
-  removeButton.innerText = "Remove";
-  removeButton.setAttribute("type", "button");
-  removeButton.setAttribute("id", "remove-buttonid");
-  //removeButton.addEventListener("click", handleRemove);
-  //const entry = document.querySelector("parentNode");
-  //remove(entry);
+  //remove button callback
+  function forRemoveButton(e) {
+    console.log("remove");
+    const entry = e.target.parentNode;
+    entry.remove();
+
+    const messageSection = document.getElementById("messages");
+    const messageList = messageSection.getElementsByTagName("li");
+    console.log(messageList);
+    console.log(messageList.length);
+    if (messageList.length === 0) {
+      messageSection.hidden = true;
+    }
+  }
+
+  //Add remove button
+    const removeButton = document.createElement("BUTTON");
+    removeButton.innerText = "Remove";
+    removeButton.setAttribute("type", "button");
+    removeButton.setAttribute("id", "remove-buttonid");
+    removeButton.addEventListener('click', forRemoveButton);
+    console.log(removeButton);
+
+  //Append remove button and message
 
   newMessage.appendChild(removeButton);
-  messageList.appendChild(newMessage);
+  messageList[0].appendChild(newMessage);
 
-  //Clear the form
+
+  //Reset
   messageForm.reset();
-};
 
-const messageSection = document.querySelector('#messages');
-const messageList = messageSection.querySelector("ul");
-//const newMessage = messageSection.createElement("li");
-// newMessage.innerHTML = ;
-//<a href="mailto:usersEmail">usersName</a>
-//<span>usersMessage</span>
-
-//const removeButton 
+  
