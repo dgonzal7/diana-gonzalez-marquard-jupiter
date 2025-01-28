@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
-  <body>
+<body>
   
   <nav class="topnav">
       <a href="#About">About</a>
@@ -23,6 +23,7 @@
       <a href="#Skills">Skills</a>
       <a href="#Projects">Projects</a>
       <a href="#Connect">Connect</a>
+      <a href="#messageform">Message Me</a>
   </nav>
   
   <h1>Diana Gonzalez-Marquard</h1>
@@ -101,6 +102,36 @@
   </section>
 
   <img src ="DGM.jpg" alt="A photo of the website creator.">
+
+  <section id="messageform">
+    <h2>Leave a Message!</h2>
+
+    <form name="leave_message" class="message-form">
+      <br>
+      <label for="usersNameId">Name:</label>
+      <br>
+      <input type="text" name="usersName" id="usersNameId" required="true">
+      <br>
+      <label for="emailId">Email:</label>
+      <br>
+      <input type="email" name="usersEmail" id="emailId" required="true">
+      <br>
+      <label for="usersMessageId">Message</label>
+      <br>
+      <textarea name="usersMessage" id="usersMessageId" required="true"></textarea>
+      <br>
+      <button type="submit" class="button" name="submitButton">Submit</button>
+    </form>
+
+  </section>
+
+  <section id="messages">
+    <h2>Messages</h2>
+    <ul>
+
+    </ul>
+  </section>
+
   <script src="js/index.js"></script>
-  </body>
+</body>   
 </html>
